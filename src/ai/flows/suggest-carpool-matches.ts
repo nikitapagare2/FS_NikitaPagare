@@ -108,7 +108,7 @@ const suggestCarpoolMatchesPrompt = ai.definePrompt({
   Use the getCoordinates tool to convert addresses into latitude and longitude to accurately assess route similarity.
   Analyze the route similarity and timing compatibility to suggest the best matches.
 
-  Consider students with similar routes and departure times within the acceptable delay.
+  It's not always about finding an exact match. A student might be a good match if their route significantly overlaps with the user's route, even if their start or end points are different. Be flexible and consider students with similar routes and departure times within the acceptable delay.
 
   Current Student Request:
   - Student ID: {{{studentId}}}
