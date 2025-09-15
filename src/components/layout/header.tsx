@@ -6,12 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { generateCurrentUserPseudonym } from "@/lib/user";
 
 export default function Header() {
-  const [pseudonym, setPseudonym] = useState<string | null>(null);
-
-  useEffect(() => {
-    // Generate pseudonym on the client-side to avoid hydration mismatch
-    setPseudonym(generateCurrentUserPseudonym());
-  }, []);
+  const studentName = "Nikita Pagare";
 
   return (
     <header className="flex items-center justify-between p-4 border-b bg-card">
@@ -29,11 +24,7 @@ export default function Header() {
           </AvatarFallback>
         </Avatar>
         <div className="text-right">
-          {pseudonym ? (
-            <p className="font-semibold text-sm text-foreground">{pseudonym}</p>
-          ) : (
-            <div className="h-5 w-28 bg-muted rounded animate-pulse" />
-          )}
+          <p className="font-semibold text-sm text-foreground">{studentName}</p>
           <p className="text-xs text-muted-foreground">Student</p>
         </div>
       </div>
