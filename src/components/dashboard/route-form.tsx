@@ -45,9 +45,9 @@ export default function RouteForm({ onSubmit, isLoading }: RouteFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      origin: "123 Main St, Springfield",
-      destination: "Springfield University",
-      departureTime: "8:00 AM",
+      origin: "Atharva University",
+      destination: "Malad Station",
+      departureTime: "14:00",
       acceptableDelay: 15,
     },
   });
