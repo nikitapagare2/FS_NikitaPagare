@@ -14,6 +14,28 @@ const formSchema = z.object({
   acceptableDelay: z.coerce.number().min(0),
 });
 
+// PSEUDOCODE for getMatches server action:
+// 1. RECEIVE DATA:
+//    - The function is called from the client with the user's route details.
+//
+// 2. VALIDATE INPUT:
+//    - Ensure the received data matches the expected schema.
+//
+// 3. PREPARE AI INPUT:
+//    - Create a temporary, unique `studentId` for the current user's request.
+//    - Combine the `studentId` with the validated form data to create an input object for the AI flow.
+//
+// 4. CALL AI FLOW:
+//    - `await suggestCarpoolMatches(input)`: Call the Genkit flow to get potential carpool matches from the AI model.
+//
+// 5. PROCESS AI RESPONSE:
+//    - The AI returns a list of matches.
+//    - Iterate through each match and enhance it with user-friendly data:
+//      - Generate a unique, anonymous `pseudonym` (e.g., "SwiftPuma42").
+//      - Generate a unique `avatarUrl` for variety in the UI.
+//
+// 6. RETURN RESULT:
+//    - Return the final, processed list of matches back to the client.
 export async function getMatches(data: z.infer<typeof formSchema>) {
   const validation = formSchema.safeParse(data);
   if (!validation.success) {

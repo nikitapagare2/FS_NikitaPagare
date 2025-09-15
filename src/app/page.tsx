@@ -12,6 +12,32 @@ import { getMatches } from "@/lib/actions";
 type Match = SuggestCarpoolMatchesOutput[0];
 type UserRoute = { origin: string; destination: string };
 
+// PSEUDOCODE for Home component:
+// 1. STATE MANAGEMENT:
+//    - `matches`: An array to store potential carpool matches from the AI.
+//    - `selectedMatch`: The match currently selected by the user to chat with.
+//    - `isLoading`: A boolean to track when the AI is processing a request.
+//    - `userRoute`: The origin and destination entered by the user.
+//
+// 2. CORE FUNCTIONS:
+//    - `handleFindMatches(formData)`:
+//      - Set `isLoading` to true.
+//      - Store the user's route.
+//      - Call the `getMatches` server action with the form data.
+//      - When the action returns, update the `matches` state with the result.
+//      - Set `isLoading` to false.
+//
+//    - `handleSelectMatch(match)`:
+//      - Update the `selectedMatch` state with the user's selection.
+//
+//    - `handleCloseChat()`:
+//      - Reset `selectedMatch` to null to close the chat view.
+//
+// 3. UI RENDERING:
+//    - Display `RouteForm` to get user input.
+//    - Display `MatchList`, showing skeletons while loading or the list of matches.
+//    - If a `selectedMatch` exists, display the `ChatView`.
+//    - Otherwise, display the `MapView` with the user's route and match locations.
 export default function Home() {
   const [matches, setMatches] = useState<Match[]>([]);
   const [selectedMatch, setSelectedMatch] = useState<Match | null>(null);
